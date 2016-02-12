@@ -54,7 +54,6 @@ For the player stats, I just grabbed the last row from the Per Game stats table.
 
 Check out the code below for getting the roster and player stats:
 
-**INSERT PLAYER SCRAPING CODE**
 {% highlight ruby %}
   def self.get_roster(team)
     page = open_page(team.team_url)
