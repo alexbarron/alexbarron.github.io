@@ -6,11 +6,15 @@ categories: ruby gems nba
 ---
 As part of the Learn-Verified course at Flatiron, we were assigned a project of creating a Ruby gem. The requirements were to pull in a set of data through scraping or an API, and develop a command line interface for drilling down into that data.
 
-This was an excellent challenge because it required us to utilize a number of key skills from the course including object oriented design, mass assignment, manipulating data, scraping, and more. The other big challenge of this project was to figure out how to package a gem. This proved to not be that technically difficult, but it was very mentally rewarding. As a novice Ruby developer, the idea of contributing a gem seemed very far away. Certainly only developers with years of experience could contribute gems, right? Wrong. While my gem is not all that technically complicated, I'm proud to have a published gem out in the world for anyone to use.
+This was an excellent challenge because it required us to utilize a number of key skills from the course including object oriented design, mass assignment, manipulating data, scraping, and more. The other big challenge of this project was to figure out how to package a gem. This proved to be very rewarding. 
+
+As a novice Ruby developer, the idea of contributing a gem seemed very far away. Certainly only developers with years of experience could contribute gems, right? Wrong. While my gem is not all that technically complicated, I'm proud to have a published gem out in the world for anyone to use.
+
+Let me tell you about my gem.
 
 I'm a huge basketball nerd so when I saw we had to create a CLI gem for scraping and accessing data, it was a no brainer to do something with NBA stats. My goal was to create a CLI gem where anyone could get a list of current NBA teams, get any team's current roster, and display any player's stats.
 
-The first task I wanted to tackle on this project was scraping the team list. I find scraping really fun so I simply had to start there. I used basketball-reference.com to get the list of teams. Getting the list proved to be pretty simple, but organizing teams by Western and Eastern conferences was a little tougher. I decided to put this off until later because 1 alphabetized list of all 30 teams would be fine to start. After getting everything else working, I figured out how to filter teams by conference as shown in the final code below:
+The first task I wanted to tackle on this project was scraping the team list. I find scraping really fun so I simply had to start there. I used <a href="http://basketball-reference.com">Basketball Reference</a> to get the list of teams. Getting the list proved to be pretty simple, but organizing teams by Western and Eastern conferences was a little tougher. I decided to put this off until later because one alphabetized list of all 30 teams would be fine to start. After getting everything else working, I figured out how to filter teams by conference as shown in the final code below:
 
 {% highlight ruby %}
 class NbaStats::Scraper
@@ -44,13 +48,13 @@ end
 
 As you can see above, I put all my scraping code in a Scraper class separate from my Team class. I knew I would be scraping data for my Player class eventually so I decided it'd be best to have all my scraping methods within one class.
 
-The next challenge was getting all the player names for any team. I didn't want to scrape all 30 teams to get the roster for one team so in my previous team scraper, I saved the URL for each team page. This way if someone requested the Golden State Warriors, I already had their team page and could scrape just their roster.
+The next challenge was getting the roster for any team. This involved building another scraper method called Scraper#get_roster that knew how to pull in all the players listed on any team's 2015-16. This method working by opening the team's team_url attribute(which I collected in the previous Scraper#get_teams) and then scraping each player's basic information from their roster table.
 
-Similarly, I didn't want to have to scrape stats for all 12-15 players on a team. I implemented the same solution of saving all the player URLs so I had just what I need to get the stats of any requested player.
+Collecting a player's stats worked similarly. In the Scraper#get_roster method, I collected each player's profile URL. In my Scraper#get_player_stats method, I could access this player_url attribute for the requested player and scrape the needed data.
 
-Fortunately, all the roster lists and player stats were nicely organized in tables on Basketball Reference. Getting the roster just meant selecting each row in the roster table and assigning a row to a player. Each player's data such as their name, number, years of experience, and height was packaged up in a hash. A full team roster was an array of these player data hashes.
+Fortunately, all the roster lists and player stats were nicely organized in tables on Basketball Reference. Getting the roster meant selecting each row in the roster table and assigning a row to a player. Each player's data such as their name, number, years of experience, and height was packaged up in a hash. A full team roster was an array of these player data hashes.
 
-For the player stats, I just grabbed the last row from the Per Game stats table. I only wanted the last row becauase this row contained their 2015-16 season stats. Just like the player data hash from before, I assigned all the player's stats to a hash.
+For the player stats, I grabbed the last row from the Per Game stats table. I only wanted the last row because this row contained their 2015-16 season stats. Just like the player data hash from before, I assigned all the player's stats to a hash.
 
 Check out the code below for getting the roster and player stats:
 
@@ -96,7 +100,7 @@ Check out the code below for getting the roster and player stats:
   end
 {% endhighlight %}
 
-Now that I had all this team and player data, I wanted to display it nicely in the terminal. Rather than reinvent a way to cleanly display data in a terminal, I sought out a gem to help me do this. All it took was 1 Google search to turn up the terminal-table gem. After installing this gem, I just had to map my roster and player data to arrays that terminal-table could convert into a clean looking table. See the results below along with the code to accomplish this:
+Now that I had all this team and player data, I wanted to display it nicely in the terminal. Rather than reinvent a way to cleanly display data in a terminal, I sought out a gem to help me do this. All it took was a Google search to turn up the terminal-table gem. After installing this gem, I could organize my roster and player data into arrays that terminal-table could convert into a clean looking table. See the results below along with the code to accomplish this:
 
 ![Terminal Screenshot](/assets/nba-stats-terminal.png)
 
@@ -126,8 +130,8 @@ Now that I had all this team and player data, I wanted to display it nicely in t
 
 Now that I had a working command line interface for getting NBA player stats, it was time to package everything up as a gem.
 
-I won't lie, I was a little nervous about screwing this up, but I was super excited. Turns out there was no need to be nervous because there are so many resources out there for how to create and publish your own gem. The RubyGems.org guides were obviously fantastic. The most useful resource was just looking at a couple examples of how other people did it. Once I had seen some real world examples, I configured my own gemspec file, built it, and published it to RubyGems.org.
+I won't lie, I was a little nervous about screwing this up, but I was also super excited. Turns out there was no need to be nervous because there are so many resources out there for how to create and publish your own gem. The RubyGems.org guides were obviously fantastic. The most useful resource was for me was looking at a couple examples of how other people did it. Once I had seen some real world examples, I configured my own gemspec file, built it, and published it to RubyGems.org.
 
-I then eagerly fired up a terminal on my other Mac and entered 'gem install nba-stats'. It all installed and I thought I was done. I got an error when I ran it though! Turns out I overlooked the crucial step of adding dependencies in my gemspec file. Even though I had required the terminal-table gem in my lib directory, my other Mac didn't have the terminal-table gem installed so it crashed when I tried to run the gem. After adding the required gem dependencies to the gemspec file, it all worked swimmingly!
+I then eagerly fired up a terminal on my other Mac and entered 'gem install nba-stats'. It all installed and I thought I was done. I got an error when I ran it though! Turns out I overlooked the crucial step of adding dependencies in my gemspec file. Even though I had required the terminal-table gem in my lib directory, my other Mac didn't have the terminal-table gem installed so it crashed when I tried to run the gem. After adding the required gem dependencies to the gemspec file, it all worked smoothly.
 
 If you'd like to play around with my gem or see the code, look up my gem <a href="https://rubygems.org/gems/nba-stats">here.</a>
