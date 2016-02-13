@@ -4,6 +4,8 @@ title:  "Creating My First Gem"
 date:   2016-02-11 19:20:21 -0800
 categories: ruby gems nba
 ---
+<iframe width="560" height="315" src="https://www.youtube.com/embed/ps5M-ri66Zw" frameborder="0" allowfullscreen></iframe>
+
 As part of the Learn-Verified course at Flatiron, we were assigned a project of creating a Ruby gem. The requirements were to pull in a set of data through scraping or an API, and develop a command line interface for drilling down into that data.
 
 This was an excellent challenge because it required us to utilize a number of key skills from the course including object oriented design, mass assignment, manipulating data, scraping, and more. The other big challenge of this project was to figure out how to package a gem. This proved to be very rewarding. 
