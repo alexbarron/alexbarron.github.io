@@ -2,7 +2,7 @@
 layout: post
 title:  "Adding jQuery to Rails Project"
 date:   2016-04-07 16:14:21 -0800
-categories: ruby rails
+categories: ruby rails jquery javascript
 ---
 <iframe width="560" height="315" src="https://www.youtube.com/embed/UEkgwQE-6II" frameborder="0" allowfullscreen></iframe>
 
