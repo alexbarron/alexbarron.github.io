@@ -4,7 +4,7 @@ title:  "Combining AngularJS and Rails"
 date:   2016-04-19 11:31:21 -0800
 categories: ruby rails angularjs javascript
 ---
-<iframe width="560" height="315" src="https://youtu.be/oqjOT1LgGog" frameborder="0" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/oqjOT1LgGog" frameborder="0" allowfullscreen></iframe>
 
 For the final project of the Flatiron School's Learn-Verified program, we were challenged to build an app with a Rails backend API and an AngularJS front end. Going through the AngularJS part of the Learn-Verified program was the most challenging part of the course so I had no doubt this project would also be the most challenging. OO Ruby, Sinatra, and Rails all made sense to me very quickly. AngularJS, however, tripped me up a lot. I still have a lot to learn and I fully intend to supplement my AngularJS studying with more studying and building. Building this project was a big confidence booster though.
 
@@ -24,7 +24,6 @@ The first thing I built for this app were all the Rails models, controllers, and
 
 {% highlight ruby %}
 # models/airport.rb
-
 class Airport < ActiveRecord::Base
   has_many :departures, foreign_key: :origin_id, class_name: "Flight"
   has_many :arrivals, foreign_key: :destination_id, class_name: "Flight"
@@ -33,13 +32,11 @@ class Airport < ActiveRecord::Base
 end
 
 # models/airline.rb
-
 class Airline < ActiveRecord::Base
   has_many :flights
 end
 
 # models/flight.rb
-
 class Flight < ActiveRecord::Base
   belongs_to :origin, foreign_key: :origin_id, class_name: "Airport"
   belongs_to :destination, foreign_key: :destination_id, class_name: "Airport"
@@ -251,7 +248,6 @@ Check out the full code below which is stored in an Angular directive:
 
 {% highlight javascript %}
 // directives/Map
-
 function Map() {
   return {
     templateUrl: 'views/flights/map.html',
