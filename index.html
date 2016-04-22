@@ -4,20 +4,36 @@ layout: default
 
 <div class="home">
 
-  <h1 class="page-heading">Posts</h1>
+  <h3>
+    Hey, I'm Alex Barron. I'm a software business guy transitioning to web application development. I use Ruby, Rails, and AngularJS mainly. I live in the SF Bay Area. I spent 3 years studying and working in Asia(China & Japan) until returning to the US in 2012. Big fan of painfully spicy food, pugs, and travel. I'll be a seeking a developer position in San Francisco starting May 2016. <a href="/about/">Read more about me here.</a>
+  </h3>
 
-  <ul class="post-list">
+  <h2>Contact Me</h2>
+  <p>
+    <strong>Email:</strong> alexbarron@gmail.com<br />
+    <strong>GitHub:</strong> {% include icon-github.html username="alexbarron" %}<br />
+    <strong>Linkedin:</strong> <i class="fa fa-linkedin"></i> <a href="https://linkedin.com/in/apbarron">apbarron</a>
+  </p>
+
+  <h2>Things I've Built</h2>
+
+  <ul>
+    <li><a href="http://github.com/alexbarron/nba-stats-cli-gem">NBA Stats CLI Ruby Gem (Ruby)</a></li>
+    <li><a href="http://github.com/alexbarron/wedding-planner">Wedding Planning App (Sinatra)</a></li>
+    <li><a href="http://github.com/alexbarron/nba_fantasy_js">Fantasy NBA Game (Rails and jQuery)</a></li>
+    <li><a href="http://github.com/alexbarron/gigglr">Comedy Show Tracker (Rails)</a></li>
+    <li><a href="http://github.com/alexbarron/hiko">Flight Information App (AngularJS)</a>.</li>
+  </ul>
+
+  <h2>Things I've Wrote</h2>
+  <ul>
     {% for post in site.posts %}
       <li>
-        <span class="post-meta">{{ post.date | date: "%b %-d, %Y" }}</span>
-
-        <h2>
-          <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
-        </h2>
+          <a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
       </li>
     {% endfor %}
   </ul>
 
-  <p class="rss-subscribe">subscribe <a href="{{ "/feed.xml" | prepend: site.baseurl }}">via RSS</a></p>
+
 
 </div>
