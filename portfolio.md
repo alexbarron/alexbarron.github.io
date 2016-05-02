@@ -6,7 +6,7 @@ permalink: /portfolio/
 <p>Here's a quick overview of what I've built. My full Github account is here: {% include icon-github.html username="alexbarron" %}</p>
 
 <h2><a href="http://github.com/alexbarron/hiko">Hiko - Flight Information App (AngularJS & Rails)</a></h2>
-![Terminal Screenshot](/assets/hiko.png)
+![Terminal Screenshot](/assets/hiko-map.png)
 <h4>
   April 2016<br />
   Hiko is a tool for air travel nerds to look up flight, airport, and airline information.
