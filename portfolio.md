@@ -3,7 +3,6 @@ layout: page
 title: Portfolio
 permalink: /portfolio/
 ---
-
 <p>Here's a quick overview of what I've built. My full Github account is here: {% include icon-github.html username="alexbarron" %}</p>
 
 <h2><a href="http://github.com/alexbarron/hiko">Hiko - Flight Information App (AngularJS & Rails)</a></h2>
