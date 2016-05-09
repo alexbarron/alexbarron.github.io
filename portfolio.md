@@ -63,7 +63,7 @@ permalink: /portfolio/
 ![Terminal Screenshot](/assets/nba-stats-terminal.png)
 <h4>
   February 2016<br />
-  A command line Ruby gem for quickly accessing up-to-date NBA player stats.
+  A command line Ruby gem for quickly accessing up-to-date NBA player stats. Run "gem install nba-stats" in your terminal to install.
 </h4>
 <ul>
   <li>Built command line interface in Ruby</li>
@@ -74,6 +74,7 @@ permalink: /portfolio/
 </ul>
 
 <h2><a href="http://github.com/alexbarron/gigglr">Gigglr - Comedy Show Tracker (Rails)</a></h2>
+![Terminal Screenshot](/assets/gigglr.png)
 <h4>
   October - November 2015(Before Flatiron School)<br />
   Gigglr helps stand up comedy fans never miss when their favorite comedians perform near them.
