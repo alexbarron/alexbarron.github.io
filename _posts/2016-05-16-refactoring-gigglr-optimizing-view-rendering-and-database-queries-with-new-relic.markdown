@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Re-factoring Gigglr: Optimizing View Rendering and Database Queries With New Relic"
-date:   2016-05-16 08:58:21 -0800
+date:   2016-05-16 07:58:21 -0800
 categories: ruby rails newrelic optimization database
 ---
 
